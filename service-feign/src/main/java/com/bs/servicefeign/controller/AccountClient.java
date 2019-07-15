@@ -1,12 +1,11 @@
 package com.bs.servicefeign.controller;
 
+
+import com.bs.servicefeign.Entity.AccountWithTokenEntity;
+import com.bs.servicefeign.Entity.TokenEntity;
 import com.bs.servicefeign.service.AccountService;
-import com.bs.servicefeign.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -17,9 +16,9 @@ public class AccountClient {
     @Autowired
     AccountService accountService;
 
-    @GetMapping(value = "/queryCards")
-    public String getCustomer(@RequestParam String token, @RequestParam String accountId) {
-        return accountService.getCustomer(token, accountId);
+    @PostMapping(value = "/queryCards", produces = {"application/json"})
+    public String getAccount(@RequestBody AccountWithTokenEntity accountWithTokenEntity) {
+        return accountService.getAccount(accountWithTokenEntity);
     }
 
 }

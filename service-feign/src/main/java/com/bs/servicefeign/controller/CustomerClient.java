@@ -14,7 +14,7 @@ public class CustomerClient {
     @Autowired
     CustomerService customerService;
 
-    @PostMapping(value = "/customerDashboard")
+    @PostMapping(value = "/customerDashboard",produces = {"application/json"})
     public String getCustomer(@RequestBody TokenEntity token) {
         return customerService.getCustomer(token);
     }

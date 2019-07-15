@@ -16,12 +16,12 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @RequestMapping("/customerDashboard")
+    @RequestMapping(value = "/customerDashboard", produces = {"application/json"})
     @ResponseBody
     public Map<String, Object> getCustomer(@RequestBody TokenEntity token){
 //        System.out.println(token);
         String customerId = token.getToken().split("-")[0];
-        System.out.println("==================="+customerId);
+//        System.out.println("==================="+customerId);
         Map<String, Object> resultMap =  customerService.findCustomerById(customerId);
         return resultMap;
     }

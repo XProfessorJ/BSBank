@@ -3,19 +3,19 @@ package com.bs.servicezuul.filter;
 import com.bs.servicezuul.util.Encrypt;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import org.json.JSONObject;
+
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestBody;
-import sun.misc.IOUtils;
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
+
 
 @Component
 public class LoginFilter extends ZuulFilter {
@@ -48,28 +48,50 @@ public class LoginFilter extends ZuulFilter {
             log.info("login");
             return null;
         }
-        BufferedReader reader = null;
-        StringBuilder sb = new StringBuilder();
+        String accessToken = "";
         try{
-            reader = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
-            String line = null;
-            while ((line = reader.readLine()) != null){
-                sb.append(line);
-            }
-        } catch (IOException e){
-            e.printStackTrace();
-        } finally {
-            try{
-                if (null != reader){ reader.close();
-                }
-            } catch (IOException e){
-                e.printStackTrace();
-            }
+            String postJson = getParm(request);
+            JSONObject jsonObject = JSONObject.fromObject(postJson);
+            accessToken = jsonObject.getString("token");
+        } catch (Exception e) {
+            ctx.setSendZuulResponse(false);
+            ctx.setResponseStatusCode(401);
+            try {
+                ctx.getResponse().getWriter().write("token is null");
+            }catch (Exception e1){}
+            return null;
         }
-        String accessToken = sb.toString().replaceAll(" ","").replaceAll("\"", "").replaceAll("\\{","").replaceAll("}","").split(":")[1];
+
+//        BufferedReader reader = null;
+//        StringBuilder sb = new StringBuilder();
+//        try{
+//            reader = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
+//            String line = null;
+//            while ((line = reader.readLine()) != null){
+//                sb.append(line);
+//            }
+//        } catch (IOException e){
+//            e.printStackTrace();
+//        } finally {
+//            try{
+//                if (null != reader){ reader.close();
+//                }
+//            } catch (IOException e){
+//                e.printStackTrace();
+//            }
+//        }
+//        String accessToken = sb.toString().replaceAll(" ","").replaceAll("\"", "").replaceAll("\\{","").replaceAll("}","").split(":")[1];
         System.out.println(accessToken);
+        if (accessToken==null) {
+            ctx.setSendZuulResponse(false);
+            ctx.setResponseStatusCode(401);
+            try {
+                ctx.getResponse().getWriter().write("token is null");
+            }catch (Exception e){}
+            return null;
+        }
         String customerId = accessToken.split("-")[0];
-//        System.out.println("================================"+customerId);
+        System.out.println("================================"+customerId);
         if(!accessToken.equals(encrypt.getTokenByCustomerId(customerId))) {
             log.warn("token is error");
             ctx.setSendZuulResponse(false);
@@ -83,5 +105,27 @@ public class LoginFilter extends ZuulFilter {
         log.info("ok");
         return null;
     }
+
+    public String getParm(HttpServletRequest request) {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new InputStreamReader(request.getInputStream(), "UTF-8"));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        String line = null;
+        StringBuilder sb = new StringBuilder();
+        try {
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
+
 }
 
