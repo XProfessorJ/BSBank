@@ -6,16 +6,23 @@ import com.bs.servicezuul.util.Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
+@CrossOrigin
 public class LoginController {
 
     @Autowired
     Encrypt encrypt;
 
     @PostMapping(value = "/login")
-    public String login(@RequestBody CustomerEntity customerEntity){
+    @ResponseBody
+    public Map<String, Object> login(@RequestBody CustomerEntity customerEntity){
         String token =  encrypt.generateToken(customerEntity.getPhone(), customerEntity.getPassword());
-        return token;
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("token", token);
+        return resultMap;
     }
 
 }

@@ -22,6 +22,9 @@ public class AccountEntity {
 
     String accountType;
 
+    public AccountEntity() {
+    }
+
     public AccountEntity(String accountId, String accountType) {
         this.accountId = accountId;
         this.accountType = accountType;

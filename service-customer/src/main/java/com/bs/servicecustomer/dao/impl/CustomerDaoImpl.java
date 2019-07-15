@@ -2,14 +2,18 @@ package com.bs.servicecustomer.dao.impl;
 
 
 import com.bs.servicecustomer.dao.CustomerDao;
+import com.bs.servicecustomer.entity.AccountEntity;
 import com.bs.servicecustomer.entity.CustomerEntity;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
@@ -41,4 +45,12 @@ public class CustomerDaoImpl implements CustomerDao {
         });
        return customerEntity;
     }
+
+    @Override
+    public List<AccountEntity> getAccountsByCustomerId(String customerId) {
+        String sql = "select * from account where accountId in (select accountId from customer_account where customerId = ?)";
+        List<AccountEntity> accountEntityList = jdbcTemplate.query(sql, new Object[]{customerId}, new BeanPropertyRowMapper(AccountEntity.class));
+        return accountEntityList;
+    }
+
 }
