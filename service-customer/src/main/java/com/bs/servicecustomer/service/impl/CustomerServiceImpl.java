@@ -18,6 +18,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Map<String, Object> findCustomerById(String customerId) {
         Map<String, Object> map = new HashMap<>();
+        System.out.println("=========================="+customerId);
         map.put("customer", customerDao.findCustomerById(customerId));
         map.put("accounts", customerDao.getAccountsByCustomerId(customerId));
         return map;

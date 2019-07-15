@@ -1,5 +1,6 @@
 package com.bs.servicefeign.controller;
 
+import com.bs.servicefeign.Entity.TokenEntity;
 import com.bs.servicefeign.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +14,8 @@ public class CustomerClient {
     @Autowired
     CustomerService customerService;
 
-    @GetMapping(value = "/customerDashboard")
-    public String getCustomer(@RequestParam String token) {
+    @PostMapping(value = "/customerDashboard")
+    public String getCustomer(@RequestBody TokenEntity token) {
         return customerService.getCustomer(token);
     }
 
