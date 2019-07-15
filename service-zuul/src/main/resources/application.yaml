@@ -37,6 +37,9 @@ zuul:
     customer:
       path: /customer/**
       serviceId: service-feign
+    account:
+      path: /account/**
+      serviceId: service-feign
     authrization:
       path: /authrization/**
       serviceId: service-zuul

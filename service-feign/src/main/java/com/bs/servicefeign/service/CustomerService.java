@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 @CrossOrigin
 public interface CustomerService {
     @RequestMapping(value = "/customerDashboard",method = RequestMethod.GET)
-    String sayHiFromClientOne(@RequestParam(value = "token") String token);
+    String getCustomer(@RequestParam(value = "token") String token);
 }

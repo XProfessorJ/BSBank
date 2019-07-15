@@ -7,3 +7,9 @@ server:
 spring:
   application:
     name: service-feign
+feign:
+  client:
+    config:
+      remote-service:
+        connectTimeout: 60000
+        readTimeout: 12000

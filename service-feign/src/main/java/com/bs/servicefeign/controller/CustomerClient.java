@@ -14,8 +14,9 @@ public class CustomerClient {
     CustomerService customerService;
 
     @GetMapping(value = "/customerDashboard")
-    public String sayHi(@RequestParam String token) {
-        return customerService.sayHiFromClientOne(token);
+    public String getCustomer(@RequestParam String token) {
+        return customerService.getCustomer(token);
     }
+
 }
 
