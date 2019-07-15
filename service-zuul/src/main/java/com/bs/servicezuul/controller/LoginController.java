@@ -21,6 +21,9 @@ public class LoginController {
     public Map<String, Object> login(@RequestBody CustomerEntity customerEntity){
         String token =  encrypt.generateToken(customerEntity.getPhone(), customerEntity.getPassword());
         Map<String, Object> resultMap = new HashMap<>();
+        if (token == null) {
+            resultMap.put("error", "Phone or password is wrong!");
+        }
         resultMap.put("token", token);
         return resultMap;
     }
