@@ -40,6 +40,9 @@ zuul:
     account:
       path: /account/**
       serviceId: service-feign
+    transrecord:
+      path: /transrecord/**
+      serviceId: service-feign
     authrization:
       path: /authrization/**
       serviceId: service-zuul
