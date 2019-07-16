@@ -1,6 +1,7 @@
 package com.bs.servicezuul.filter;
 
 import com.bs.servicezuul.util.Encrypt;
+import com.bs.servicezuul.util.EncryptUtil;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
@@ -46,7 +47,7 @@ public class LoginFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         log.info(String.format("%s >>> %s", request.getMethod(), request.getRequestURL().toString()));
-        if (request.getRequestURL().toString().contains("authrization")){
+        if (request.getRequestURL().toString().contains("authrization")) {
             log.info("login");
             return null;
         }
@@ -54,7 +55,7 @@ public class LoginFilter extends ZuulFilter {
             return null;
         }
         String accessToken = "";
-        try{
+        try {
             String postJson = getRequestParm(request);
             JSONObject jsonObject = JSONObject.fromObject(postJson);
             accessToken = jsonObject.getString("token");
@@ -63,7 +64,8 @@ public class LoginFilter extends ZuulFilter {
             ctx.setResponseStatusCode(401);
             try {
                 ctx.getResponse().getWriter().write("token is null");
-            }catch (Exception e1){}
+            } catch (Exception e1) {
+            }
             return null;
         }
 
@@ -87,28 +89,39 @@ public class LoginFilter extends ZuulFilter {
 //        }
 //        String accessToken = sb.toString().replaceAll(" ","").replaceAll("\"", "").replaceAll("\\{","").replaceAll("}","").split(":")[1];
         System.out.println(accessToken);
-        if (accessToken==null) {
+        if (accessToken == null) {
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
             try {
                 ctx.getResponse().getWriter().write("token is null");
-            }catch (Exception e){}
+            } catch (Exception e) {
+            }
             return null;
         }
-        String customerId = accessToken.split("-")[0];
-        System.out.println("================================"+customerId);
-        if(!accessToken.equals(encrypt.getTokenByCustomerId(customerId))) {
-            log.warn("token is error");
-            ctx.setSendZuulResponse(false);
-            ctx.setResponseStatusCode(401);
-            try {
-                ctx.getResponse().getWriter().write("token is error");
-            }catch (Exception e){}
 
+
+        try {
+            EncryptUtil des = new EncryptUtil("9ba45bfd500642328ec03ad8ef1b6e75", "utf-8");
+            String tokenString = des.decode(accessToken);
+            String customerId = tokenString.split("-")[0];
+            if (!accessToken.equals(encrypt.getTokenByCustomerId(customerId))) {
+                log.warn("token is error");
+                ctx.setSendZuulResponse(false);
+                ctx.setResponseStatusCode(401);
+                try {
+                    ctx.getResponse().getWriter().write("token is error");
+                } catch (Exception e) {
+                }
+
+                return null;
+            }
+            log.info("ok");
             return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "token is error";
         }
-        log.info("ok");
-        return null;
+
     }
 
     public String getRequestParm(HttpServletRequest request) {
