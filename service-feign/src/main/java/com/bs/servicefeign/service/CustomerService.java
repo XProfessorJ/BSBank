@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient(value = "service-customer", fallback = CustomerError.class)
 @CrossOrigin
 public interface CustomerService {
-    @RequestMapping(value = "/customerDashboard",method = RequestMethod.POST)
+    @RequestMapping(value = "/customerDashboard",method = RequestMethod.POST, produces = {"application/json"})
     String getCustomer(@RequestBody TokenEntity token);
 }

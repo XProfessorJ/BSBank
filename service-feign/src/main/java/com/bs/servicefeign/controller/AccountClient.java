@@ -2,7 +2,6 @@ package com.bs.servicefeign.controller;
 
 
 import com.bs.servicefeign.Entity.AccountWithTokenEntity;
-import com.bs.servicefeign.Entity.TokenEntity;
 import com.bs.servicefeign.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

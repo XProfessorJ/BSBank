@@ -13,5 +13,7 @@ feign:
       remote-service:
         connectTimeout: 60000
         readTimeout: 12000
+  httpclient:
+    enabled: true
   hytrix:
     enabled: true
