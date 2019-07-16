@@ -22,11 +22,23 @@ public class AccountEntity {
 
     String accountType;
 
-    public AccountEntity() {
-    }
-
-    public AccountEntity(String accountId, String accountType) {
+    public AccountEntity(String accountId, String accountType, String accountStatus) {
         this.accountId = accountId;
         this.accountType = accountType;
+        this.accountStatus = accountStatus;
     }
+
+    public String getAccountStatus() {
+        return accountStatus;
+    }
+
+    public void setAccountStatus(String accountStatus) {
+        this.accountStatus = accountStatus;
+    }
+
+    String accountStatus;
+
+    public AccountEntity() {
+    }
+    
 }

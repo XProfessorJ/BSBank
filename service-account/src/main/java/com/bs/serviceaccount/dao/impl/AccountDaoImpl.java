@@ -32,6 +32,7 @@ public class AccountDaoImpl implements AccountDao {
                 AccountEntity account = new AccountEntity();
                 account.setAccountId(resultSet.getString("accountId"));
                 account.setAccountType(resultSet.getString("accountType"));
+                account.setAccountStatus(resultSet.getString("accountStatus"));
                 return account;
             }
         });
