@@ -10,7 +10,7 @@ public class TransRecordEntity {
     double balance;
     String summary;
     String postscript;
-    String settlementData;
+    String settlementDate;
 
     public String getCardId() {
         return cardId;
@@ -76,12 +76,12 @@ public class TransRecordEntity {
         this.postscript = postscript;
     }
 
-    public String getSettlementData() {
-        return settlementData;
+    public String getsettlementDate() {
+        return settlementDate;
     }
 
-    public void setSettlementData(String settlementData) {
-        this.settlementData = settlementData;
+    public void setsettlementDate(String settlementDate) {
+        this.settlementDate = settlementDate;
     }
 
 }
