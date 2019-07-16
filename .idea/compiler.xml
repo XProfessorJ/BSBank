@@ -12,6 +12,7 @@
         <module name="service-feign" />
         <module name="service-hi" />
         <module name="service-ribbon" />
+        <module name="service-transrecord" />
         <module name="service-zuul" />
       </profile>
     </annotationProcessing>
@@ -24,6 +25,7 @@
       <module name="service-feign" options="-parameters" />
       <module name="service-hi" options="-parameters" />
       <module name="service-ribbon" options="-parameters" />
+      <module name="service-transrecord" options="-parameters" />
       <module name="service-zuul" options="-parameters" />
     </option>
   </component>
