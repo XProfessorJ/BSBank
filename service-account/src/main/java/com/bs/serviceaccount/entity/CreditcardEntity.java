@@ -35,6 +35,9 @@ public class CreditcardEntity extends CardEntity{
         return reasonCode;
     }
 
+    public CreditcardEntity() {
+    }
+
     public void setReasonCode(String reasonCode) {
         this.reasonCode = reasonCode;
     }
