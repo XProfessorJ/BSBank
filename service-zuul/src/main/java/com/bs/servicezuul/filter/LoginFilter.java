@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import java.io.InputStreamReader;
 
 
 @Component
+@CrossOrigin
 public class LoginFilter extends ZuulFilter {
 
     private static Logger log = LoggerFactory.getLogger(LoginFilter.class);
@@ -48,9 +50,12 @@ public class LoginFilter extends ZuulFilter {
             log.info("login");
             return null;
         }
+        if (request.getMethod().equals("OPTIONS")) {
+            return null;
+        }
         String accessToken = "";
         try{
-            String postJson = getParm(request);
+            String postJson = getRequestParm(request);
             JSONObject jsonObject = JSONObject.fromObject(postJson);
             accessToken = jsonObject.getString("token");
         } catch (Exception e) {
@@ -106,7 +111,7 @@ public class LoginFilter extends ZuulFilter {
         return null;
     }
 
-    public String getParm(HttpServletRequest request) {
+    public String getRequestParm(HttpServletRequest request) {
         BufferedReader br = null;
         try {
             br = new BufferedReader(new InputStreamReader(request.getInputStream(), "UTF-8"));

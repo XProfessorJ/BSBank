@@ -35,14 +35,17 @@ public class CreditcardEntity extends CardEntity{
         return reasonCode;
     }
 
+    public CreditcardEntity() {
+    }
+
     public void setReasonCode(String reasonCode) {
         this.reasonCode = reasonCode;
     }
 
     Timestamp creditLimitIncreaseEndDate;
 
-    public CreditcardEntity(String cardId, String productName, String profuctCode, String accountNickname, String displayAccountNumber, String currencyCode, String accountClassification, String accountStatus, double currentBalance, double availableBalance, String accountId, double requestedCreditLimitAmount, Timestamp creditLimitIncreaseStartDate, Timestamp creditLimitIncreaseEndDate, String reasonCode) {
-        super(cardId, productName, profuctCode, accountNickname, displayAccountNumber, currencyCode, accountClassification, accountStatus, currentBalance, availableBalance, accountId);
+    public CreditcardEntity(String cardId, String productName, String productCode, String accountNickname, String displayAccountNumber, String currencyCode, String accountClassification, String accountStatus, double currentBalance, double availableBalance, String accountId, double requestedCreditLimitAmount, Timestamp creditLimitIncreaseStartDate, Timestamp creditLimitIncreaseEndDate, String reasonCode) {
+        super(cardId, productName, productCode, accountNickname, displayAccountNumber, currencyCode, accountClassification, accountStatus, currentBalance, availableBalance, accountId);
         this.requestedCreditLimitAmount = requestedCreditLimitAmount;
         this.creditLimitIncreaseStartDate = creditLimitIncreaseStartDate;
         this.creditLimitIncreaseEndDate = creditLimitIncreaseEndDate;

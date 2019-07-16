@@ -32,6 +32,7 @@ public class AccountDaoImpl implements AccountDao {
                 AccountEntity account = new AccountEntity();
                 account.setAccountId(resultSet.getString("accountId"));
                 account.setAccountType(resultSet.getString("accountType"));
+                account.setAccountStatus(resultSet.getString("accountStatus"));
                 return account;
             }
         });
@@ -43,7 +44,7 @@ public class AccountDaoImpl implements AccountDao {
         String savingcardSql = "select * from savingcard where accountId = ?";
         String creditcardSql = "select * from creditcard where accountId = ?";
         List<SavingcardEntity> savingcardList = jdbcTemplate.query(savingcardSql, new Object[]{accountId}, new BeanPropertyRowMapper(SavingcardEntity.class));
-        List<CreditcardEntity> creditcardList = jdbcTemplate.query(savingcardSql, new Object[]{accountId}, new BeanPropertyRowMapper(CreditcardEntity.class));
+        List<CreditcardEntity> creditcardList = jdbcTemplate.query(creditcardSql, new Object[]{accountId}, new BeanPropertyRowMapper(CreditcardEntity.class));
         Map<String, List> map = new HashMap<>();
         map.put("savingcards", savingcardList);
         map.put("creditcards", creditcardList);
