@@ -9,6 +9,7 @@
         <module name="eureka-server" />
         <module name="service-account" />
         <module name="service-customer" />
+        <module name="service-customer (1)" />
         <module name="service-feign" />
         <module name="service-hi" />
         <module name="service-ribbon" />
@@ -22,6 +23,7 @@
       <module name="eureka-server" options="-parameters" />
       <module name="service-account" options="-parameters" />
       <module name="service-customer" options="-parameters" />
+      <module name="service-customer (1)" options="-parameters" />
       <module name="service-feign" options="-parameters" />
       <module name="service-hi" options="-parameters" />
       <module name="service-ribbon" options="-parameters" />
