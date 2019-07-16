@@ -46,7 +46,7 @@
 * 完成database创建
    ```
    数据库选择mysql
-   实体表：customer/account/savingcard/credit
+   实体表：customer/account/savingcard/creditcard
    关系表：customer-account
    ```
 * 完成entity类设计和dao层常用api，使用技术spring data jpa
