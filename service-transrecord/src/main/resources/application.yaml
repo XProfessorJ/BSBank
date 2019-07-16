@@ -1,5 +1,5 @@
 server:
-  port: 8076
+  port: 8082
 
 spring:
   application:
@@ -8,7 +8,7 @@ spring:
     username: root
     password: 1234
     url: jdbc:mysql://127.0.0.1:3306/bsbank?serverTimezone=GMT%2B8
-    driver-class-name: com.mysql.cj.jdbc.Driver  # If anything wrong, delete the "cj".
+    driver-class-name: com.mysql.jdbc.Driver
 
 eureka:
   client:
