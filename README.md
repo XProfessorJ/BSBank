@@ -23,7 +23,10 @@
                 Map<String, List> getCardsByAccountId(String accountId);
        dao: AccountEntity findAccountByAccountId(String accountId);
             Map<String, List> getCardsByAccountId(String accountId);
-   3.authrization:（构建在zuul中，需要zuul配置redis）
+   3.transrecord:（创建底层service）
+       service: List<TransRecordEntity> getTransRecordListByCardId(String cardId);
+       dao: List<TransRecordEntity> getTransRecordListByCardId(String cardId);
+   4.authrization:（构建在zuul中，需要zuul配置redis）
        dao: CustomerEntity findCustomerByPhoneAndPassword(String phone, String password);
        util: public String generateToken(String phone, String password);
              public String getTokenByCustomerId(String customerId);
@@ -46,7 +49,7 @@
 * 完成database创建
    ```
    数据库选择mysql
-   实体表：customer/account/savingcard/creditcard
+   实体表：customer/account/savingcard/creditcard/transrecord
    关系表：customer-account
    ```
 * 完成entity类设计和dao层常用api，使用技术spring data jpa
@@ -66,13 +69,13 @@
 * 具体controller map映射待与前台确认
 
 ### 2019.7.14
-休息一天
+自由学习
 
 ### 2019.7.15
 * 解决前后端跨域问题
    ```
    后端controller/filter层添加标签@CrossOrigin
-   由于跨域问题，前端先发OPTIONS请求，再发GET/POST请求，因此filter中需增加如下代码对OPTIONS请求放行
+   由于跨域问题，前端先发OPTIONS请求，再发GET/POST请求，因此filter中run()方法需增加如下代码对OPTIONS请求放行
    if (request.getMethod().equals("OPTIONS")) {
        return null;
    }
@@ -83,7 +86,7 @@
    后端：
        所有Mapping映射中配置参数produces = {"application/json"}
        使用@RequestBody获取前端参数，以Map<String, Object>格式向前端传值
-       增加传值实体类TokenEntity和AccountWithTokenEntity
+       增加传值实体类TokenEntity、AccountWithTokenEntity和CardIdWithTokenEntity
        login请求验证手机号和密码，正确则生成token并存入缓存传递给前端，错误则返回null
    前端：
        login请求传递phone和password用于后端验证，验证通过收到token写入cookie用于其他请求验证
@@ -91,4 +94,39 @@
    ```
    
 ### 2019.7.16
-* 联调前后端
+   基本功能已开发完毕，完成前后端具体通信规则制定，约定前后端请求转发规则如下：
+   
+   * zuul层路由配置：
+   除验证服务zuul直接完成外，其他请求先经过feign完成负载均衡、熔断和底层服务调用
+   ```
+   routes:    
+       customer:
+           path: /customer/**
+           serviceId: service-feign
+       account:
+           path: /account/**
+           serviceId: service-feign
+       transrecord:
+           path: /transrecord/**
+           serviceId: service-feign
+       authrization:
+           path: /authrization/**
+           serviceId: service-zuul
+   ```
+   * feign层服务调用：
+   启用http客户端转发请求，启用hytrix熔断
+   ```        
+   client:
+       config:
+           remote-service:
+           connectTimeout: 60000
+           readTimeout: 12000
+       httpclient:
+           enabled: true
+       hytrix:
+           enabled: true
+   
+   ```
+
+### 2019.7.17
+完成token加密
