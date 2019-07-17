@@ -16,7 +16,7 @@ public class TransRecordController {
     @Autowired
     TransRecordService transRecordService;
 
-    @RequestMapping(value = "/transRecord", produces = {"application/json"})
+    @RequestMapping(value = "/queryTransrecords", produces = {"application/json"})
     @ResponseBody
     public List<TransRecordEntity> getTransRecordList(@RequestBody CardIdWithTokenEntity cardIdWithTokenEntity){
         return transRecordService.getTransRecordListByCardId(cardIdWithTokenEntity.getCardId());

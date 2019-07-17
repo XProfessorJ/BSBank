@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "service-transrecord", fallback = TransRecordError.class)
 @CrossOrigin
 public interface TransRecordService {
-    @RequestMapping(value = "/transRecord", method = RequestMethod.POST, produces = {"application/json"})
+    @RequestMapping(value = "/queryTransrecords", method = RequestMethod.POST, produces = {"application/json"})
     String getTransRecordList(@RequestBody CardIdWithTokenEntity cardIdWithTokenEntity);
 }

@@ -18,7 +18,7 @@ public class TransRecordClient {
     @Autowired
     TransRecordService transRecordService;
 
-    @PostMapping(value = "/transRecord", produces = {"application/json"})
+    @PostMapping(value = "/queryTransrecords", produces = {"application/json"})
     public String getAccount(@RequestBody CardIdWithTokenEntity cardIdWithTokenEntity) {
         return transRecordService.getTransRecordList(cardIdWithTokenEntity);
     }

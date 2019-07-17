@@ -1,16 +1,19 @@
 package com.bs.servicetransrecord.entity;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class TransRecordEntity {
 
     String cardId;
     String oppositeCardId;
-    String time;
-    int inOrOut;
+    Timestamp time;
+    String inOrOut;
     double amount;
     double balance;
-    String summary;
+    double summary;
     String postscript;
-    String settlementDate;
+    Date settlementDate;
 
     public String getCardId() {
         return cardId;
@@ -28,19 +31,19 @@ public class TransRecordEntity {
         this.oppositeCardId = oppositeCardId;
     }
 
-    public String getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 
-    public int getInOrOut() {
+    public String getInOrOut() {
         return inOrOut;
     }
 
-    public void setInOrOut(int inOrOut) {
+    public void setInOrOut(String inOrOut) {
         this.inOrOut = inOrOut;
     }
 
@@ -60,11 +63,11 @@ public class TransRecordEntity {
         this.balance = balance;
     }
 
-    public String getSummary() {
+    public double getSummary() {
         return summary;
     }
 
-    public void setSummary(String summary) {
+    public void setSummary(double summary) {
         this.summary = summary;
     }
 
@@ -76,11 +79,11 @@ public class TransRecordEntity {
         this.postscript = postscript;
     }
 
-    public String getsettlementDate() {
+    public Date getsettlementDate() {
         return settlementDate;
     }
 
-    public void setsettlementDate(String settlementDate) {
+    public void setsettlementDate(Date settlementDate) {
         this.settlementDate = settlementDate;
     }
 

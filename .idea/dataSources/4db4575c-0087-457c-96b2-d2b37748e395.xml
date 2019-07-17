@@ -809,241 +809,303 @@
     <table id="204" parent="2" name="customer"/>
     <table id="205" parent="2" name="customer_account"/>
     <table id="206" parent="2" name="savingcard"/>
-    <column id="207" parent="202" name="accountId">
+    <table id="207" parent="2" name="transrecord"/>
+    <column id="208" parent="202" name="accountId">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="208" parent="202" name="accountType">
+    <column id="209" parent="202" name="accountType">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="209" parent="202" name="PRIMARY">
+    <column id="210" parent="202" name="accountStatus">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="211" parent="202" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>accountId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="210" parent="203" name="cardId">
+    <column id="212" parent="203" name="cardId">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="211" parent="203" name="productName">
+    <column id="213" parent="203" name="productName">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="212" parent="203" name="productCode">
+    <column id="214" parent="203" name="productCode">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="213" parent="203" name="accountNickname">
+    <column id="215" parent="203" name="accountNickname">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="214" parent="203" name="displayAccountNumber">
+    <column id="216" parent="203" name="displayAccountNumber">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="215" parent="203" name="currencyCode">
+    <column id="217" parent="203" name="currencyCode">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="216" parent="203" name="accountClassification">
+    <column id="218" parent="203" name="accountClassification">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="217" parent="203" name="accountStatus">
+    <column id="219" parent="203" name="accountStatus">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="218" parent="203" name="currentBalance">
+    <column id="220" parent="203" name="currentBalance">
       <Position>9</Position>
       <DataType>double(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="219" parent="203" name="availableBalance">
+    <column id="221" parent="203" name="availableBalance">
       <Position>10</Position>
       <DataType>double(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="220" parent="203" name="requestedCreditLimitAmount">
+    <column id="222" parent="203" name="requestedCreditLimitAmount">
       <Position>11</Position>
       <DataType>double(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="221" parent="203" name="creditLimitIncreaseStartDate">
+    <column id="223" parent="203" name="creditLimitIncreaseStartDate">
       <Position>12</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="222" parent="203" name="creditLimitIncreaseEndDate">
+    <column id="224" parent="203" name="creditLimitIncreaseEndDate">
       <Position>13</Position>
       <DataType>timestamp|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="223" parent="203" name="reasonCode">
+    <column id="225" parent="203" name="reasonCode">
       <Position>14</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="224" parent="203" name="accountId">
+    <column id="226" parent="203" name="accountId">
       <Position>15</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="225" parent="203" name="PRIMARY">
+    <key id="227" parent="203" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cardId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="226" parent="204" name="customerId">
+    <column id="228" parent="204" name="customerId">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="227" parent="204" name="customerType">
+    <column id="229" parent="204" name="customerType">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="228" parent="204" name="names">
+    <column id="230" parent="204" name="names">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="229" parent="204" name="gender">
+    <column id="231" parent="204" name="gender">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="230" parent="204" name="prefix">
+    <column id="232" parent="204" name="prefix">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="231" parent="204" name="suffix">
+    <column id="233" parent="204" name="suffix">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="232" parent="204" name="customerSegment">
+    <column id="234" parent="204" name="customerSegment">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="233" parent="204" name="partnerCustomerSegment">
+    <column id="235" parent="204" name="partnerCustomerSegment">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="234" parent="204" name="phone">
+    <column id="236" parent="204" name="phone">
       <Position>9</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="204" name="email">
+    <column id="237" parent="204" name="email">
       <Position>10</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="236" parent="204" name="password">
+    <column id="238" parent="204" name="password">
       <Position>11</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="237" parent="204" name="PRIMARY">
+    <key id="239" parent="204" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>customerId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="238" parent="205" name="customerId">
+    <column id="240" parent="205" name="customerId">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="239" parent="205" name="accountId">
+    <column id="241" parent="205" name="accountId">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="240" parent="205" name="PRIMARY">
+    <key id="242" parent="205" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>customerId
 accountId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="241" parent="206" name="cardId">
+    <column id="243" parent="206" name="cardId">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="242" parent="206" name="productName">
+    <column id="244" parent="206" name="productName">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="206" name="productCode">
+    <column id="245" parent="206" name="productCode">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="206" name="accountNickname">
+    <column id="246" parent="206" name="accountNickname">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="206" name="displayAccountNumber">
+    <column id="247" parent="206" name="displayAccountNumber">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="206" name="currencyCode">
+    <column id="248" parent="206" name="currencyCode">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="206" name="accountClassification">
+    <column id="249" parent="206" name="accountClassification">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="206" name="accountStatus">
+    <column id="250" parent="206" name="accountStatus">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="206" name="currentBalance">
+    <column id="251" parent="206" name="currentBalance">
       <Position>9</Position>
       <DataType>double(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="206" name="availableBalance">
+    <column id="252" parent="206" name="availableBalance">
       <Position>10</Position>
       <DataType>double(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="206" name="accountId">
+    <column id="253" parent="206" name="accountId">
       <Position>11</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="252" parent="206" name="PRIMARY">
+    <key id="254" parent="206" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cardId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="255" parent="207" name="transId">
+      <Position>1</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="256" parent="207" name="cardId">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="257" parent="207" name="oppositeCardId">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="258" parent="207" name="time">
+      <Position>4</Position>
+      <DataType>timestamp|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="259" parent="207" name="inorout">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="260" parent="207" name="amount">
+      <Position>6</Position>
+      <DataType>double(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="261" parent="207" name="balance">
+      <Position>7</Position>
+      <DataType>double(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="262" parent="207" name="summary">
+      <Position>8</Position>
+      <DataType>double(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="263" parent="207" name="postscript">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="264" parent="207" name="settlementDate">
+      <Position>10</Position>
+      <DataType>date|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="265" parent="207" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>transId</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

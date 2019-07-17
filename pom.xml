@@ -21,6 +21,9 @@
         <module>service-hi</module>
         <module>service-ribbon</module>
         <module>service-feign</module>
+        <module>service-customer</module>
+        <module>service-account</module>
+        <module>service-transrecord</module>
     </modules>
 
     <properties>
