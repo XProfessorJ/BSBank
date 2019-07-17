@@ -17,14 +17,23 @@ public class TransRecordDaoImpl implements TransRecordDao {
     JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<TransRecordEntity> getTransRecordListByCardId(String cardId){
-        List<TransRecordEntity> list = jdbcTemplate.query("select * from transrecord where cardId = ?", new Object[]{cardId}, new BeanPropertyRowMapper(TransRecordEntity.class));
+    public List<TransRecordEntity> getTransRecordListByCardId(String cardId, int pagenum, int pagerow){
+        int starter = (pagenum-1)*pagerow;
+        String sql = "select * from transrecord where cardId = ? limit " + starter + " , " + pagerow;
+        List<TransRecordEntity> list = jdbcTemplate.query(sql, new Object[]{cardId}, new BeanPropertyRowMapper(TransRecordEntity.class));
         if(list != null && list.size()>0){
             return list;
         }else{
             return null;
         }
     }
+
+    @Override
+    public int countRecordsByCardId(String cardId){
+        String sql = "select COUNT(*) from transrecord where cardId = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{cardId}, Integer.class);
+    }
+
 
 
 }

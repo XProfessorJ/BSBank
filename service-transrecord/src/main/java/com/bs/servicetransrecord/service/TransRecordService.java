@@ -5,5 +5,6 @@ import com.bs.servicetransrecord.entity.TransRecordEntity;
 import java.util.List;
 
 public interface TransRecordService {
-    List<TransRecordEntity> getTransRecordListByCardId(String cardId);
+    List<TransRecordEntity> getRecordByCardIdAndPage(String cardId, int pagenum, int pagerow);
+    int countRecordsByCardId(String cardId);
 }

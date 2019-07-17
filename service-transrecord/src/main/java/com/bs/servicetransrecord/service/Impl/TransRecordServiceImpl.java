@@ -14,8 +14,12 @@ public class TransRecordServiceImpl implements TransRecordService {
     TransRecordDao transRecordDao;
 
     @Override
-    public List<TransRecordEntity> getTransRecordListByCardId(String cardId){
-        return transRecordDao.getTransRecordListByCardId(cardId);
+    public List<TransRecordEntity> getRecordByCardIdAndPage(String cardId, int pagenum, int pagerow){
+        return transRecordDao.getTransRecordListByCardId(cardId, pagenum, pagerow);
     }
 
+    @Override
+    public int countRecordsByCardId(String cardId){
+        return transRecordDao.countRecordsByCardId(cardId);
+    }
 }
