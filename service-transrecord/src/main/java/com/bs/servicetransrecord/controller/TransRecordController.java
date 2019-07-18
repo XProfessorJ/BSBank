@@ -20,15 +20,23 @@ public class TransRecordController {
     @RequestMapping(value = "/queryTransrecords", produces = {"application/json"})
     @ResponseBody
     public PageList getTransRecordList(@RequestBody CardIdWithTokenEntity cardIdWithTokenEntity){
-        int pagenum = cardIdWithTokenEntity.getPagenum();
-        int pagerow = cardIdWithTokenEntity.getPagerow();
+        int pagenum = 0;
+        int pagerow = 0;
+        try{
+            pagenum = cardIdWithTokenEntity.getPagenum();
+            pagerow = cardIdWithTokenEntity.getPagerow();
+        } catch (Exception e) {
+            return null;
+        }
+
+
 
         PageList pageList = new PageList();
         if(pagenum == 0){
             pagenum = 1;
         }
         if(pagerow == 0){
-            pagenum = 10;
+            pagerow = 10;
         }
         List<TransRecordEntity> list = transRecordService.getRecordByCardIdAndPage(cardIdWithTokenEntity.getCardId(),
                 pagenum, pagerow);
