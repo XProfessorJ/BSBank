@@ -9,6 +9,7 @@ public class PageList {
     private int pages;    //总页数
     private List list=new ArrayList();
 
+
     public int getPage() {
         return page;
     }

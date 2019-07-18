@@ -3,6 +3,7 @@ package com.bs.servicetransrecord.controller;
 
 import com.bs.servicetransrecord.entity.CardIdWithTokenEntity;
 import com.bs.servicetransrecord.entity.TransRecordEntity;
+import com.bs.servicetransrecord.entity.TransRecordWithDisplayEntity;
 import com.bs.servicetransrecord.service.TransRecordService;
 import com.bs.servicetransrecord.utils.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class TransRecordController {
         if(pagerow == 0){
             pagerow = 10;
         }
-        List<TransRecordEntity> list = transRecordService.getRecordByCardIdAndPage(cardIdWithTokenEntity.getCardId(),
+        List<TransRecordWithDisplayEntity> list = transRecordService.getRecordByCardIdAndPage(cardIdWithTokenEntity.getCardId(),
                 pagenum, pagerow);
 
         int TotalRows = transRecordService.countRecordsByCardId(cardIdWithTokenEntity.getCardId());

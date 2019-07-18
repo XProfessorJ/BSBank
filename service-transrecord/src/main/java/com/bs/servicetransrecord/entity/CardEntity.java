@@ -4,7 +4,7 @@ public class CardEntity {
 
     String cardId;
     String productName;
-    String profuctCode;
+    String productCode;
     String accountNickname;
     String displayAccountNumber;
     String currencyCode;
@@ -13,10 +13,10 @@ public class CardEntity {
     public CardEntity() {
     }
 
-    public CardEntity(String cardId, String productName, String profuctCode, String accountNickname, String displayAccountNumber, String currencyCode, String accountClassification, String accountStatus, double currentBalance, double availableBalance, String accountId) {
+    public CardEntity(String cardId, String productName, String productCode, String accountNickname, String displayAccountNumber, String currencyCode, String accountClassification, String accountStatus, double currentBalance, double availableBalance, String accountId) {
         this.cardId = cardId;
         this.productName = productName;
-        this.profuctCode = profuctCode;
+        this.productCode = productCode;
         this.accountNickname = accountNickname;
         this.displayAccountNumber = displayAccountNumber;
         this.currencyCode = currencyCode;
@@ -43,12 +43,12 @@ public class CardEntity {
         this.productName = productName;
     }
 
-    public String getProfuctCode() {
-        return profuctCode;
+    public String getProductCode() {
+        return productCode;
     }
 
-    public void setProfuctCode(String profuctCode) {
-        this.profuctCode = profuctCode;
+    public void setProductCode(String profuctCode) {
+        this.productCode = productCode;
     }
 
     public String getAccountNickname() {

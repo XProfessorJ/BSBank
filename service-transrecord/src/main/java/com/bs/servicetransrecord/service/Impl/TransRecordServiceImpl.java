@@ -2,6 +2,7 @@ package com.bs.servicetransrecord.service.Impl;
 
 import com.bs.servicetransrecord.dao.TransRecordDao;
 import com.bs.servicetransrecord.entity.TransRecordEntity;
+import com.bs.servicetransrecord.entity.TransRecordWithDisplayEntity;
 import com.bs.servicetransrecord.service.TransRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class TransRecordServiceImpl implements TransRecordService {
     TransRecordDao transRecordDao;
 
     @Override
-    public List<TransRecordEntity> getRecordByCardIdAndPage(String cardId, int pagenum, int pagerow){
+    public List<TransRecordWithDisplayEntity> getRecordByCardIdAndPage(String cardId, int pagenum, int pagerow){
         return transRecordDao.getTransRecordListByCardId(cardId, pagenum, pagerow);
     }
 
