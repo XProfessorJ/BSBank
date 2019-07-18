@@ -7,6 +7,27 @@ public class CardIdWithTokenEntity {
     private int pagenum;
     private int pagerow;
 
+    public int getTotalRows() {
+        return totalRows;
+    }
+
+    public CardIdWithTokenEntity(String cardId, String token, int pagenum, int pagerow, int totalRows) {
+        this.cardId = cardId;
+        this.token = token;
+        this.pagenum = pagenum;
+        this.pagerow = pagerow;
+        this.totalRows = totalRows;
+    }
+
+    public CardIdWithTokenEntity() {
+    }
+
+    public void setTotalRows(int totalRows) {
+        this.totalRows = totalRows;
+    }
+
+    private int totalRows;
+
     public String getCardId() {
         return cardId;
     }

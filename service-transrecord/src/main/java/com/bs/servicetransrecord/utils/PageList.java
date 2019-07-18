@@ -25,6 +25,16 @@ public class PageList {
         this.pages = pages;
     }
 
+    public PageList() {
+    }
+
+    public PageList(int page, int totalRows, int pages, List list) {
+        this.page = page;
+        this.totalRows = totalRows;
+        this.pages = pages;
+        this.list = list;
+    }
+
     public List getList() {
         if(list==null){
             list=new ArrayList();

@@ -43,6 +43,7 @@ public class TransRecordController {
 
         pageList.setPages(pages);
         pageList.setList(list);
+        pageList.setTotalRows(TotalRows);
 
         return pageList;
     }
