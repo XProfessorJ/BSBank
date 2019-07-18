@@ -11,7 +11,7 @@
 * eureka管理服务注册
 * zuul实现网管功能和token验证，token保存于redis缓存
 * feign集成具体服务和管理负载均衡
-* customer和account服务实现具体api
+* 服务实现具体api
    ```
    前后端交互尚未沟通完毕，以下模块api均不含controller层
    1.customer:（创建底层service）

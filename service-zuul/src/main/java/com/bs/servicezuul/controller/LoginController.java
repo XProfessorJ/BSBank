@@ -23,8 +23,9 @@ public class LoginController {
         Map<String, Object> resultMap = new HashMap<>();
         if (token == null) {
             resultMap.put("error", "Phone or password is wrong!");
+        } else{
+            resultMap.put("token", token);
         }
-        resultMap.put("token", token);
         return resultMap;
     }
 
