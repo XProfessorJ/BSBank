@@ -24,9 +24,9 @@
        dao: AccountEntity findAccountByAccountId(String accountId);
             Map<String, List> getCardsByAccountId(String accountId);
    3.transrecord:（创建底层service）
-       service: List<TransRecordEntity> getTransRecordListByCardId(String cardId);
+       service: List<TransRecordWithDisplayEntity> getTransRecordListByCardId(String cardId, int pagenum, int pagerow);
                 int countRecordsByCardId(String cardId);
-       dao: List<TransRecordEntity> getTransRecordListByCardId(String cardId);
+       dao: List<TransRecordWithDisplayEntity> getTransRecordListByCardId(String cardId, int pagenum, int pagerow);
             int countRecordsByCardId(String cardId);
    4.authrization:（构建在zuul中，需要zuul配置redis）
        dao: CustomerEntity findCustomerByPhoneAndPassword(String phone, String password);
