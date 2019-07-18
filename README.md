@@ -25,7 +25,9 @@
             Map<String, List> getCardsByAccountId(String accountId);
    3.transrecord:（创建底层service）
        service: List<TransRecordEntity> getTransRecordListByCardId(String cardId);
+                int countRecordsByCardId(String cardId);
        dao: List<TransRecordEntity> getTransRecordListByCardId(String cardId);
+            int countRecordsByCardId(String cardId);
    4.authrization:（构建在zuul中，需要zuul配置redis）
        dao: CustomerEntity findCustomerByPhoneAndPassword(String phone, String password);
        util: public String generateToken(String phone, String password);
@@ -129,4 +131,11 @@
    ```
 
 ### 2019.7.17
-完成token加密
+完成token加密，之前的请求生成token存储了用户的id和密码信息，缺乏安全性，因此增加加密处理。
+修改逻辑如下：
+* 修改generateToken接口，对原生token进行DES加密，缓存写入加密后的token后传递给前台  
+  key：9ba45bfd500642328ec03ad8ef1b6e75
+* 修改LoginFilter，获取前台传递的加密token后，增加解密验证逻辑，其他逻辑不变。
+
+### 2019.7.18
+项目总结，完成PPT整合和文档整理
