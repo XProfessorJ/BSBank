@@ -1,5 +1,6 @@
 package com.bs.servicezuul.entity;
 
+
 public class CustomerEntity {
 
     String customerId;

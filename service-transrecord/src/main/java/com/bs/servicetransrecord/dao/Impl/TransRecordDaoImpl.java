@@ -20,10 +20,11 @@ public class TransRecordDaoImpl implements TransRecordDao {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+
     @Override
     public List<TransRecordWithDisplayEntity> getTransRecordListByCardId(String cardId, int pagenum, int pagerow){
         int starter = (pagenum-1)*pagerow;
-        String sql = "select * from transrecord where cardId = ? limit " + starter + " , " + pagerow;
+        String sql = "select * from transrecord where cardId = ? order by time desc limit " + starter + " , " + pagerow;
         List<TransRecordEntity> list = jdbcTemplate.query(sql, new Object[]{cardId}, new BeanPropertyRowMapper(TransRecordEntity.class));
         List<TransRecordWithDisplayEntity> transRecordWithDisplayEntities = new ArrayList<>();
         for (TransRecordEntity transRecord: list) {
