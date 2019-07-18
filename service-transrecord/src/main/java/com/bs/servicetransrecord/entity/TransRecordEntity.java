@@ -5,10 +5,45 @@ import java.sql.Timestamp;
 
 public class TransRecordEntity {
 
+    String transId;
     String cardId;
+
+    public String getTransId() {
+        return transId;
+    }
+
+    public void setTransId(String transId) {
+        this.transId = transId;
+    }
+
+    public Date getSettlementDate() {
+        return settlementDate;
+    }
+
+    public void setSettlementDate(Date settlementDate) {
+        this.settlementDate = settlementDate;
+    }
+
     String oppositeCardId;
     Timestamp time;
     String inOrOut;
+
+    public TransRecordEntity(String transId, String cardId, String oppositeCardId, Timestamp time, String inOrOut, double amount, double balance, double summary, String postscript, Date settlementDate) {
+        this.transId = transId;
+        this.cardId = cardId;
+        this.oppositeCardId = oppositeCardId;
+        this.time = time;
+        this.inOrOut = inOrOut;
+        this.amount = amount;
+        this.balance = balance;
+        this.summary = summary;
+        this.postscript = postscript;
+        this.settlementDate = settlementDate;
+    }
+
+    public TransRecordEntity() {
+    }
+
     double amount;
     double balance;
     double summary;
@@ -79,12 +114,5 @@ public class TransRecordEntity {
         this.postscript = postscript;
     }
 
-    public Date getsettlementDate() {
-        return settlementDate;
-    }
-
-    public void setsettlementDate(Date settlementDate) {
-        this.settlementDate = settlementDate;
-    }
 
 }

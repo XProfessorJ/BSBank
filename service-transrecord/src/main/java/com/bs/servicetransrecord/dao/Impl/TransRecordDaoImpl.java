@@ -28,24 +28,27 @@ public class TransRecordDaoImpl implements TransRecordDao {
         List<TransRecordWithDisplayEntity> transRecordWithDisplayEntities = new ArrayList<>();
         for (TransRecordEntity transRecord: list) {
             TransRecordWithDisplayEntity transRecordWithDisplay = new TransRecordWithDisplayEntity();
+            transRecordWithDisplay.setTransId(transRecord.getTransId());
             transRecordWithDisplay.setCardId(transRecord.getCardId());
             transRecordWithDisplay.setOppositeCardId(transRecord.getOppositeCardId());
             transRecordWithDisplay.setAmount(transRecord.getAmount());
             transRecordWithDisplay.setBalance(transRecord.getBalance());
             transRecordWithDisplay.setInOrOut(transRecord.getInOrOut());
             transRecordWithDisplay.setPostscript(transRecord.getPostscript());
-            transRecordWithDisplay.setSettlementDate(transRecord.getsettlementDate());
+            transRecordWithDisplay.setSettlementDate(transRecord.getSettlementDate());
             transRecordWithDisplay.setSummary(transRecord.getSummary());
             transRecordWithDisplay.setTime(transRecord.getTime());
-            String querySaving = "select displayAccountNumber from savingcard where cardId = ?";
-            String display = jdbcTemplate.queryForObject(querySaving, new Object[]{transRecordWithDisplay.getCardId()}, new RowMapper<String>() {
-                @Override
-                public String mapRow(ResultSet resultSet, int i) throws SQLException {
-                    return resultSet.getString("displayAccountNumber");
-                }
-            });
-            if (display==null) {
-                querySaving = "select displayAccountNumber from creditcard where cardId = ?";
+            String display = "";
+            try{
+                String querySaving = "select displayAccountNumber from savingcard where cardId = ?";
+                display = jdbcTemplate.queryForObject(querySaving, new Object[]{transRecordWithDisplay.getCardId()}, new RowMapper<String>() {
+                    @Override
+                    public String mapRow(ResultSet resultSet, int i) throws SQLException {
+                        return resultSet.getString("displayAccountNumber");
+                    }
+                });
+            } catch (Exception e) {
+                String querySaving = "select displayAccountNumber from creditcard where cardId = ?";
                 display = jdbcTemplate.queryForObject(querySaving, new Object[]{transRecordWithDisplay.getCardId()}, new RowMapper<String>() {
                     @Override
                     public String mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -53,6 +56,7 @@ public class TransRecordDaoImpl implements TransRecordDao {
                     }
                 });
             }
+
             transRecordWithDisplay.setDisplayAccountNumber(display);
             transRecordWithDisplayEntities.add(transRecordWithDisplay);
         }

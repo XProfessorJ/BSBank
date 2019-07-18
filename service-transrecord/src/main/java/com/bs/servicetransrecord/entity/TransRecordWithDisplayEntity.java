@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 
 public class TransRecordWithDisplayEntity {
 
+    String transId;
     String cardId;
     String oppositeCardId;
     Timestamp time;
@@ -16,11 +17,20 @@ public class TransRecordWithDisplayEntity {
 
     double balance;
 
+    public String getTransId() {
+        return transId;
+    }
+
+    public void setTransId(String transId) {
+        this.transId = transId;
+    }
+
     public String getCardId() {
         return cardId;
     }
 
-    public TransRecordWithDisplayEntity(String cardId, String oppositeCardId, Timestamp time, String inOrOut, double amount, double balance, double summary, String postscript, Date settlementDate, String displayAccountNumber) {
+    public TransRecordWithDisplayEntity(String transId, String cardId, String oppositeCardId, Timestamp time, String inOrOut, double amount, double balance, double summary, String postscript, Date settlementDate, String displayAccountNumber) {
+        this.transId = transId;
         this.cardId = cardId;
         this.oppositeCardId = oppositeCardId;
         this.time = time;
