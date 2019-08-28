@@ -6,14 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="service-zuul" />
-        <module name="service-hi" />
-        <module name="service-feign" />
         <module name="eureka-server" />
-        <module name="service-transrecord" />
-        <module name="service-ribbon" />
-        <module name="service-customer" />
         <module name="service-account" />
+        <module name="service-card" />
+        <module name="service-customer" />
+        <module name="service-feign" />
+        <module name="service-hi" />
+        <module name="service-ribbon" />
+        <module name="service-transrecord" />
+        <module name="service-zuul" />
       </profile>
     </annotationProcessing>
   </component>
@@ -21,6 +22,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="eureka-server" options="-parameters" />
       <module name="service-account" options="-parameters" />
+      <module name="service-card" options="-parameters" />
       <module name="service-customer" options="-parameters" />
       <module name="service-feign" options="-parameters" />
       <module name="service-hi" options="-parameters" />

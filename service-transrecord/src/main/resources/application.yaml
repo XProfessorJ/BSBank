@@ -6,7 +6,7 @@ spring:
     name: service-transrecord
   datasource:
     username: root
-    password: 123456
+    password: 1234
     url: jdbc:mysql://127.0.0.1:3306/bank?serverTimezone=GMT%2B8
     driver-class-name: com.mysql.jdbc.Driver
 
@@ -14,5 +14,3 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-
-
