@@ -18,17 +18,18 @@ public class TransRecordController {
     @Autowired
     TransRecordService transRecordService;
 
-    @RequestMapping(value = "/queryTransrecords", produces = {"application/json"})
+    @RequestMapping(value = "/Transrecords/{cardId}/{pagenum}/{pagerow}", produces = {"application/json"})
     @ResponseBody
-    public PageList getTransRecordList(@RequestBody CardIdWithTokenEntity cardIdWithTokenEntity){
-        int pagenum = 0;
-        int pagerow = 0;
-        try{
-            pagenum = cardIdWithTokenEntity.getPagenum();
-            pagerow = cardIdWithTokenEntity.getPagerow();
-        } catch (Exception e) {
-            return null;
-        }
+//    public PageList getTransRecordList(@RequestBody CardIdWithTokenEntity cardIdWithTokenEntity){
+    public PageList getTransRecordList(@PathVariable("cardId") String cardId, @PathVariable("pagenum") Integer pagenum, @PathVariable("pagerow") Integer pagerow){
+//        int pagenum = 0;
+//        int pagerow = 0;
+//        try{
+//            pagenum = cardIdWithTokenEntity.getPagenum();
+//            pagerow = cardIdWithTokenEntity.getPagerow();
+//        } catch (Exception e) {
+//            return null;
+//        }
 
 
 
@@ -39,10 +40,9 @@ public class TransRecordController {
         if(pagerow == 0){
             pagerow = 10;
         }
-        List<TransRecordWithDisplayEntity> list = transRecordService.getRecordByCardIdAndPage(cardIdWithTokenEntity.getCardId(),
-                pagenum, pagerow);
+        List<TransRecordWithDisplayEntity> list = transRecordService.getRecordByCardIdAndPage(cardId, pagenum, pagerow);
 
-        int TotalRows = transRecordService.countRecordsByCardId(cardIdWithTokenEntity.getCardId());
+        int TotalRows = transRecordService.countRecordsByCardId(cardId);
         pageList.setPage(pagenum);
         pageList.setTotalRows(TotalRows);
         int pages = 0;

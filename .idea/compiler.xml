@@ -6,14 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eureka-server" />
-        <module name="service-account" />
-        <module name="service-customer" />
-        <module name="service-feign" />
-        <module name="service-hi" />
-        <module name="service-ribbon" />
-        <module name="service-transrecord" />
         <module name="service-zuul" />
+        <module name="service-hi" />
+        <module name="service-feign" />
+        <module name="eureka-server" />
+        <module name="service-transrecord" />
+        <module name="service-ribbon" />
+        <module name="service-customer" />
+        <module name="service-account" />
       </profile>
     </annotationProcessing>
   </component>

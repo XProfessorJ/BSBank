@@ -16,6 +16,8 @@ public class LoginController {
     @Autowired
     Encrypt encrypt;
 
+
+
     @PostMapping(value = "/login")
     @ResponseBody
     public Map<String, Object> login(@RequestBody CustomerEntity customerEntity){
@@ -25,6 +27,9 @@ public class LoginController {
             resultMap.put("error", "Phone or password is wrong!");
         } else{
             resultMap.put("token", token);
+            // 用户偏好逻辑
+
+
         }
         return resultMap;
     }

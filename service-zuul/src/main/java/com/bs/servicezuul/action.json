@@ -1,0 +1,45 @@
+{
+  "actions": [
+    {
+      "id": "1",
+      "name": "transfer_to_debit",
+      "description": "转账",
+      "priority": 1.3,
+      "params": [
+        {
+          "debitNumber": "3360 XXXX XXXX 7625",
+          "transactionDebitAmount": 1000.35,
+          "currencyCode": "CNY"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "invest_fund_product",
+      "description": "推荐基金产品",
+      "priority": 5.5,
+      "params": [
+        {
+          "productId": "98126376334",
+          "riskType": "low",
+          "rate": 3.1770,
+          "timeLimit": 60
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "hint_loan_amount",
+      "description": "贷款金额提示",
+      "priority": 0.1,
+      "params": [
+        {
+          "total": 3000000,
+          "currencyCode": "CNY",
+          "rate": 0.05,
+          "stage": 12
+        }
+      ]
+    }
+  ]
+}

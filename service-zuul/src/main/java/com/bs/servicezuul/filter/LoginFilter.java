@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Component
@@ -56,9 +59,7 @@ public class LoginFilter extends ZuulFilter {
         }
         String accessToken = "";
         try {
-            String postJson = getRequestParm(request);
-            JSONObject jsonObject = JSONObject.fromObject(postJson);
-            accessToken = jsonObject.getString("token");
+            accessToken = getHeader(request, "token");
         } catch (Exception e) {
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
@@ -69,25 +70,6 @@ public class LoginFilter extends ZuulFilter {
             return null;
         }
 
-//        BufferedReader reader = null;
-//        StringBuilder sb = new StringBuilder();
-//        try{
-//            reader = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
-//            String line = null;
-//            while ((line = reader.readLine()) != null){
-//                sb.append(line);
-//            }
-//        } catch (IOException e){
-//            e.printStackTrace();
-//        } finally {
-//            try{
-//                if (null != reader){ reader.close();
-//                }
-//            } catch (IOException e){
-//                e.printStackTrace();
-//            }
-//        }
-//        String accessToken = sb.toString().replaceAll(" ","").replaceAll("\"", "").replaceAll("\\{","").replaceAll("}","").split(":")[1];
         System.out.println(accessToken);
         if (accessToken == null) {
             ctx.setSendZuulResponse(false);
@@ -124,7 +106,7 @@ public class LoginFilter extends ZuulFilter {
 
     }
 
-    public String getRequestParm(HttpServletRequest request) {
+    private String getRequestParm(HttpServletRequest request) {
         BufferedReader br = null;
         try {
             br = new BufferedReader(new InputStreamReader(request.getInputStream(), "UTF-8"));
@@ -143,6 +125,22 @@ public class LoginFilter extends ZuulFilter {
             e.printStackTrace();
         }
         return sb.toString();
+    }
+
+    //get request headers
+    private Map<String, String> getHeadersInfo(HttpServletRequest request) {
+        Map<String, String> map = new HashMap<String, String>();
+        Enumeration headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            String key = (String) headerNames.nextElement();
+            String value = request.getHeader(key);
+            map.put(key, value);
+        }
+        return map;
+    }
+
+    private String getHeader(HttpServletRequest request, String headerName) {
+        return request.getHeader(headerName);
     }
 
 }

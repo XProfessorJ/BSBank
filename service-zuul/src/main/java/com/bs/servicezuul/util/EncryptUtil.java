@@ -15,8 +15,7 @@ import sun.misc.BASE64Encoder;
 
 /**
  * 加密/解密工具
- * @author ershuai
- * @date 2017年4月18日 上午11:27:36
+ * @date
  */
 public class EncryptUtil {
 
@@ -44,8 +43,6 @@ public class EncryptUtil {
 
     /**
      * 加密
-     * @author ershuai
-     * @date 2017年4月19日 上午9:40:53
      * @param data
      * @return
      * @throws Exception
@@ -60,8 +57,6 @@ public class EncryptUtil {
 
     /**
      * 解密
-     * @author ershuai
-     * @date 2017年4月19日 上午9:41:01
      * @param data
      * @return
      * @throws Exception

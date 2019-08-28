@@ -18,12 +18,13 @@ public class AccountController {
     @Autowired
     AccountService accountService;
 
-    @RequestMapping(value = "/queryCards", produces = {"application/json"})
+    @RequestMapping(value = "/account/{id}", produces = {"application/json"})
     @ResponseBody
-    public Map<String, Object> getAccount(@RequestBody AccountWithTokenEntity accountWithTokenEntity){
+//    public Map<String, Object> getAccount(@RequestBody AccountWithTokenEntity accountWithTokenEntity){
+    public Map<String, Object> getAccount(@PathVariable("id") String id) {
         Map<String, Object> resultMap = new HashMap<>();
-        Map<String, List> cardMap =  accountService.getCardsByAccountId(accountWithTokenEntity.getAccountId());
-        AccountEntity account = accountService.findAccountByAccountId(accountWithTokenEntity.getAccountId());
+        Map<String, List> cardMap =  accountService.getCardsByAccountId(id);
+        AccountEntity account = accountService.findAccountByAccountId(id);
         resultMap.put("account", account);
         resultMap.put("cards", cardMap);
         return resultMap;
