@@ -7,9 +7,11 @@ import com.bs.servicefeign.error.AccountError;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @FeignClient(value = "service-account", fallback = AccountError.class)
 @CrossOrigin
 public interface AccountService {
-    @RequestMapping(value = "/queryCards",method = RequestMethod.POST, produces = {"application/json"})
-    String getAccount(@RequestBody AccountWithTokenEntity accountWithTokenEntity);
+    @RequestMapping(value = "/account/{id}", method = RequestMethod.GET, produces = {"application/json"})
+    public Map<String, Object> getAccount(@PathVariable("id") String id);
 }

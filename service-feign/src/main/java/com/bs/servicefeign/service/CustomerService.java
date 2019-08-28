@@ -5,9 +5,11 @@ import com.bs.servicefeign.error.CustomerError;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @FeignClient(value = "service-customer", fallback = CustomerError.class)
 @CrossOrigin
 public interface CustomerService {
-    @RequestMapping(value = "/customerDashboard",method = RequestMethod.POST, produces = {"application/json"})
-    String getCustomer(@RequestBody TokenEntity token);
+    @RequestMapping(value = "/customer/{id}",method = RequestMethod.GET, produces = {"application/json"})
+    public Map<String, Object> getCustomer(@PathVariable("id") String id);
 }

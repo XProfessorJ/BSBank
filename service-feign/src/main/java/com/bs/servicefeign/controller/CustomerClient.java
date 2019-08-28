@@ -5,6 +5,8 @@ import com.bs.servicefeign.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @CrossOrigin
 public class CustomerClient {
@@ -14,9 +16,9 @@ public class CustomerClient {
     @Autowired
     CustomerService customerService;
 
-    @PostMapping(value = "/customerDashboard", produces = {"application/json"})
-    public String getCustomer(@RequestBody TokenEntity token) {
-        return customerService.getCustomer(token);
+    @RequestMapping(value = "/customer/{id}",method = RequestMethod.GET, produces = {"application/json"})
+    public Map<String, Object> getCustomer(@PathVariable("id") String id) {
+        return customerService.getCustomer(id);
     }
 
 }

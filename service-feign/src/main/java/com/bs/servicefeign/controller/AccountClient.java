@@ -6,6 +6,8 @@ import com.bs.servicefeign.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @CrossOrigin
 public class AccountClient {
@@ -15,9 +17,9 @@ public class AccountClient {
     @Autowired
     AccountService accountService;
 
-    @PostMapping(value = "/queryCards", produces = {"application/json"})
-    public String getAccount(@RequestBody AccountWithTokenEntity accountWithTokenEntity) {
-        return accountService.getAccount(accountWithTokenEntity);
+    @RequestMapping(value = "/account/{id}", method = RequestMethod.GET, produces = {"application/json"})
+    public Map<String, Object> getAccount(@PathVariable("id") String id) {
+        return accountService.getAccount(id);
     }
 
 }
