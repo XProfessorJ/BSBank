@@ -24,6 +24,7 @@
         <module>service-customer</module>
         <module>service-account</module>
         <module>service-transrecord</module>
+        <module>service-card</module>
     </modules>
 
     <properties>
