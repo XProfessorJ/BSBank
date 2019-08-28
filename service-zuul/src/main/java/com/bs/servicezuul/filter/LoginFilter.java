@@ -60,6 +60,7 @@ public class LoginFilter extends ZuulFilter {
         String accessToken = "";
         try {
             accessToken = getHeader(request, "token");
+            System.out.println("====================="+accessToken);
         } catch (Exception e) {
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
@@ -70,7 +71,6 @@ public class LoginFilter extends ZuulFilter {
             return null;
         }
 
-        System.out.println(accessToken);
         if (accessToken == null) {
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
@@ -103,7 +103,6 @@ public class LoginFilter extends ZuulFilter {
             e.printStackTrace();
             return "token is error";
         }
-
     }
 
     private String getRequestParm(HttpServletRequest request) {

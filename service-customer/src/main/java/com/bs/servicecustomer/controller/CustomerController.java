@@ -17,7 +17,7 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @RequestMapping(value = "/customer/{id}", produces = {"application/json"})
+    @GetMapping(value = "/customer/{id}")
     @ResponseBody
 //    public Map<String, Object> getCustomer(@RequestBody TokenEntity token){
     public Map<String, Object> getCustomer(@PathVariable("id") String id){

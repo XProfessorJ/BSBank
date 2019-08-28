@@ -16,7 +16,7 @@ public class CustomerClient {
     @Autowired
     CustomerService customerService;
 
-    @RequestMapping(value = "/customer/{id}",method = RequestMethod.GET, produces = {"application/json"})
+    @RequestMapping(value = "/customer/{id}",method = RequestMethod.GET)
     public Map<String, Object> getCustomer(@PathVariable("id") String id) {
         return customerService.getCustomer(id);
     }

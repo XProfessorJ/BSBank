@@ -2,6 +2,7 @@ package com.bs.servicezuul.controller;
 
 
 import com.bs.servicezuul.entity.CustomerEntity;
+import com.bs.servicezuul.service.CustomerService;
 import com.bs.servicezuul.util.Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,9 @@ public class LoginController {
     @Autowired
     Encrypt encrypt;
 
+    @Autowired
+    CustomerService customerService;
+
 
 
     @PostMapping(value = "/login")
@@ -26,6 +30,8 @@ public class LoginController {
         if (token == null) {
             resultMap.put("error", "Phone or password is wrong!");
         } else{
+            System.out.println(token);
+            resultMap.put("customer", customerService.findCustomerByPhoneAndPassword(customerEntity.getPhone(), customerEntity.getPassword()));
             resultMap.put("token", token);
             // 用户偏好逻辑
 
