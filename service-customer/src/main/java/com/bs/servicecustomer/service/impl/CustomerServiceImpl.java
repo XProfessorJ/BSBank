@@ -23,4 +23,5 @@ public class CustomerServiceImpl implements CustomerService {
         map.put("accounts", customerDao.getAccountsByCustomerId(customerId));
         return map;
     }
+
 }
