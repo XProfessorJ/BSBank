@@ -11,4 +11,5 @@ import java.util.Map;
  */
 public interface CardService {
     Map<String, List> getCardsByAccountId(String accountId);
+    String updateCardStatus(String cardId);
 }

@@ -1,5 +1,6 @@
 package com.bs.servicecard.controller;
 
+import com.bs.servicecard.Entity.CardEntity;
 import com.bs.servicecard.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,5 +27,13 @@ public class CardController {
         Map<String, List> cardMap =  cardService.getCardsByAccountId(accountId);
         resultMap.put("cards", cardMap);
         return resultMap;
+    }
+
+
+    //修改card状态
+    @PutMapping(value = "/cardstatus/{cardId}")
+    public String updateCardStatus(@PathVariable("cardId") String cardId) {
+        String res = cardService.updateCardStatus(cardId);
+        return res;
     }
 }

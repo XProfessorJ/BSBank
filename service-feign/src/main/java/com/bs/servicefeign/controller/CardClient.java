@@ -1,5 +1,6 @@
 package com.bs.servicefeign.controller;
 
+import com.bs.servicefeign.Entity.CardEntity;
 import com.bs.servicefeign.service.AccountService;
 import com.bs.servicefeign.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,11 @@ public class CardClient {
     @RequestMapping(value = "/cards/{accountId}", method = RequestMethod.GET)
     public Map<String, Object> getCardsByAccountId(@PathVariable("accountId") String accountId){
         return cardService.getCardsByAccountId(accountId);
+    }
+
+    //修改card状态
+    @RequestMapping(value = "/cardstatus/{cardId}", method = RequestMethod.PUT)
+    public String updateCardStatus(@PathVariable("cardId") String cardId) {
+        return cardService.updateCardStatus(cardId);
     }
 }
