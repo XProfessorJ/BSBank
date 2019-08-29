@@ -2,7 +2,6 @@ package com.bs.servicecard.controller;
 
 import com.bs.servicecard.Entity.CardEntity;
 import com.bs.servicecard.Entity.CardEntity;
-import com.bs.servicecard.Entity.CardWithTokenEntity;
 import com.bs.servicecard.Entity.CreditcardEntity;
 import com.bs.servicecard.Entity.SavingcardEntity;
 import com.bs.servicecard.Entity.SavingcardEntity;

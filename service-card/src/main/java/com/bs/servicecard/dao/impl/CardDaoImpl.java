@@ -48,7 +48,7 @@ public class CardDaoImpl implements CardDao {
         try {
             int result = jdbcTemplate.update("INSERT INTO savingcard (cardId, productName, productCode, accountNickName, displayAccountNumber, currencyCode, accountClassification, accountStatus, currentBalance, availableBalance, accountId) VALUES (?,?,?,?,?,?,?,?,?,?,?)", new PreparedStatementSetter() {
                 public void setValues(PreparedStatement ps) throws SQLException {
-                    ps.setString(1,cardId);
+                    ps.setString(1, cardId);
                     ps.setString(2, productName);
                     ps.setString(3, productCode);
                     ps.setString(4, accountNickName);

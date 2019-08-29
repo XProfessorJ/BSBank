@@ -3,9 +3,11 @@ package com.bs.servicefeign.controller;
 
 import com.bs.servicefeign.Entity.AccountWithTokenEntity;
 import com.bs.servicefeign.service.AccountService;
+import com.bs.servicefeign.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -17,9 +19,15 @@ public class AccountClient {
     @Autowired
     AccountService accountService;
 
+    @Autowired
+    CardService cardService;
+
     @RequestMapping(value = "/account/{id}", method = RequestMethod.GET, produces = {"application/json"})
     public Map<String, Object> getAccount(@PathVariable("id") String id) {
-        return accountService.getAccount(id);
+        Map<String, Object> map = new HashMap<>();
+        map.putAll(accountService.getAccount(id));
+        map.putAll(cardService.getCardsByAccountId(id));
+        return map;
     }
 
 }
