@@ -1,6 +1,5 @@
 package com.bs.servicecard.service;
 
-import com.bs.servicecard.Entity.CardEntity;
 
 import java.util.Date;
 import java.util.List;
@@ -15,4 +14,5 @@ public interface CardService {
     boolean addSavingCard(String cardId, String productName, String productCode, String accountNickName, String displayAccountNumber, String currencyCode, String accountClassification, String accountId);
     boolean addCreditCard(String  cardId, String productName, String productCode, String accountNickName, String displayAccountNumber, String currentCode, String accountClassification, Date creditLimitIncreaseStartDate, Date creditLimitIncreaseEndDate, String reasonCode, String accountId);
 
+    String updateCardStatus(String cardId);
 }

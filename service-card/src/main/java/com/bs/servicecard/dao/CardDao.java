@@ -1,6 +1,5 @@
 package com.bs.servicecard.dao;
 
-import com.bs.servicecard.Entity.CardEntity;
 
 import java.util.Date;
 import java.util.List;
@@ -12,7 +11,10 @@ import java.util.Map;
  */
 public interface CardDao {
     Map<String, List> getCardsByAccountId(String accountId);
+    String updateCardStatus(String cardId);
+
     boolean addSavingCard(String cardId, String productName, String productCode, String accountNickName, String displayAccountNumber, String currencyCode, String accountClassification, String accountId);
     boolean addCreditCard(String  cardId, String productName, String productCode, String accountNickName, String displayAccountNumber, String currentCode, String accountClassification, Date creditLimitIncreaseStartDate, Date creditLimitIncreaseEndDate, String reasonCode, String accountId);
 
-    }
+}
+

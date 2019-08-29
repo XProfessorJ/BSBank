@@ -1,8 +1,10 @@
 package com.bs.servicecard.controller;
 
 import com.bs.servicecard.Entity.CardEntity;
+import com.bs.servicecard.Entity.CardEntity;
 import com.bs.servicecard.Entity.CardWithTokenEntity;
 import com.bs.servicecard.Entity.CreditcardEntity;
+import com.bs.servicecard.Entity.SavingcardEntity;
 import com.bs.servicecard.Entity.SavingcardEntity;
 import com.bs.servicecard.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +35,18 @@ public class CardController {
         return resultMap;
     }
 
+
+    //修改card状态
+    @PutMapping(value = "/cardstatus/{cardId}")
+    public String updateCardStatus(@PathVariable("cardId") String cardId) {
+        String res = cardService.updateCardStatus(cardId);
+        return res;
+    }
+
     @PostMapping(value="/savingcard", produces = {"application/json"})
     @ResponseBody
     public boolean addSavingCard(@RequestBody SavingcardEntity savingCardEntity){
-        boolean addSavingCardFlag = false;
+        boolean addSavingCardFlag;
 
         String cardId = savingCardEntity.getCardId();
         String productName = "Debit Card";
@@ -56,7 +66,7 @@ public class CardController {
     @PostMapping(value="/creditcard", produces = {"application/json"})
     @ResponseBody
     public boolean addCreditCard(@RequestBody CreditcardEntity creditCardEntity){
-        boolean addCreditCardFlag = false;
+        boolean addCreditCardFlag;
 
         String cardId = creditCardEntity.getCardId();
         String productName = creditCardEntity.getProductName();
