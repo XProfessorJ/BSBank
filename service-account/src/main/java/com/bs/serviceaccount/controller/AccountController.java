@@ -23,10 +23,8 @@ public class AccountController {
 //    public Map<String, Object> getAccount(@RequestBody AccountWithTokenEntity accountWithTokenEntity){
     public Map<String, Object> getAccount(@PathVariable("id") String id) {
         Map<String, Object> resultMap = new HashMap<>();
-        Map<String, List> cardMap =  accountService.getCardsByAccountId(id);
         AccountEntity account = accountService.findAccountByAccountId(id);
         resultMap.put("account", account);
-        resultMap.put("cards", cardMap);
         return resultMap;
     }
 
