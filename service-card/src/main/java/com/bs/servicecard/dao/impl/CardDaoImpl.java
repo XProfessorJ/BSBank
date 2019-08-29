@@ -47,7 +47,7 @@ public class CardDaoImpl implements CardDao {
         int resSavingcard = jdbcTemplate.update(savingcardSql, new PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement preparedStatement) throws SQLException {
-                preparedStatement.setString(1,"Frozed");
+                preparedStatement.setString(1,"Frozen");
                 preparedStatement.setString(2, cardId);
             }
         });
@@ -55,12 +55,15 @@ public class CardDaoImpl implements CardDao {
         int resCreditcard = jdbcTemplate.update(creditcardSql, new PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement preparedStatement) throws SQLException {
-                preparedStatement.setString(1,"Frozed");
+                preparedStatement.setString(1,"Frozen");
                 preparedStatement.setString(2, cardId);
             }
         });
 
-        if(resSavingcard > 0 || resCreditcard > 0) { return "success"; }
-        else{ return "failure"; }
+        if (resSavingcard > 0 || resCreditcard > 0) {
+            return "success";
+        } else {
+            return "failure";
+        }
     }
 }
