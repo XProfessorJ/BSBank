@@ -1,7 +1,5 @@
 package com.bs.servicefeign.error;
 
-import com.bs.servicefeign.Entity.AccountWithTokenEntity;
-import com.bs.servicefeign.Entity.CardIdWithTokenEntity;
 import com.bs.servicefeign.Entity.PageList;
 import com.bs.servicefeign.service.TransRecordService;
 

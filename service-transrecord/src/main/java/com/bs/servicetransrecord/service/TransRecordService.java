@@ -1,8 +1,6 @@
 package com.bs.servicetransrecord.service;
 
-import com.bs.servicetransrecord.entity.TransRecordEntity;
 import com.bs.servicetransrecord.entity.TransRecordWithDisplayEntity;
-
 import java.util.List;
 
 public interface TransRecordService {

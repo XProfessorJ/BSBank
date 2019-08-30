@@ -2,13 +2,11 @@ package com.bs.serviceaccount.controller;
 
 
 import com.bs.serviceaccount.entity.AccountEntity;
-import com.bs.serviceaccount.entity.AccountWithTokenEntity;
 import com.bs.serviceaccount.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -20,7 +18,6 @@ public class AccountController {
 
     @RequestMapping(value = "/account/{id}", produces = {"application/json"})
     @ResponseBody
-//    public Map<String, Object> getAccount(@RequestBody AccountWithTokenEntity accountWithTokenEntity){
     public Map<String, Object> getAccount(@PathVariable("id") String id) {
         Map<String, Object> resultMap = new HashMap<>();
         AccountEntity account = accountService.findAccountByAccountId(id);

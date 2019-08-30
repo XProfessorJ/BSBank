@@ -10,6 +10,5 @@ import java.util.Map;
 public interface AccountService {
 
     AccountEntity findAccountByAccountId(String accountId);
-    Map<String, List> getCardsByAccountId(String accountId);
 
 }

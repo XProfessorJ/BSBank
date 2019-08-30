@@ -1,9 +1,6 @@
 package com.bs.servicecard.controller;
 
-import com.bs.servicecard.Entity.CardEntity;
-import com.bs.servicecard.Entity.CardEntity;
 import com.bs.servicecard.Entity.CreditcardEntity;
-import com.bs.servicecard.Entity.SavingcardEntity;
 import com.bs.servicecard.Entity.SavingcardEntity;
 import com.bs.servicecard.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +22,7 @@ public class CardController {
     @Autowired
     CardService cardService;
 
-    @RequestMapping(value = "/cards/{accountId}", produces = {"application/json"})
+    @GetMapping(value = "/cards/{accountId}", produces = {"application/json"})
     @ResponseBody
     public Map<String, Object> getCards(@PathVariable("accountId") String accountId) {
         Map<String, Object> resultMap = new HashMap<>();

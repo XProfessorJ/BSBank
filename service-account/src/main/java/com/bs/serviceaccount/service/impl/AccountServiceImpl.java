@@ -21,10 +21,4 @@ public class AccountServiceImpl implements AccountService {
         return accountDao.findAccountByAccountId(accountId);
     }
 
-    @Override
-    public Map<String, List> getCardsByAccountId(String accountId) {
-        return accountDao.getCardsByAccountId(accountId);
-    }
-
-
 }

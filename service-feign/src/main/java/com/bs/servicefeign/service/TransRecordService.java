@@ -1,9 +1,6 @@
 package com.bs.servicefeign.service;
 
-import com.bs.servicefeign.Entity.CardIdWithTokenEntity;
 import com.bs.servicefeign.Entity.PageList;
-import com.bs.servicefeign.Entity.TokenEntity;
-import com.bs.servicefeign.error.CustomerError;
 import com.bs.servicefeign.error.TransRecordError;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;

@@ -10,12 +10,9 @@ import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -137,9 +134,9 @@ public class CardDaoImpl implements CardDao {
         });
 
         if (resSavingcard > 0 || resCreditcard > 0) {
-            return "success";
+            return "1";
         } else {
-            return "failure";
+            return "0";
         }
     }
 }

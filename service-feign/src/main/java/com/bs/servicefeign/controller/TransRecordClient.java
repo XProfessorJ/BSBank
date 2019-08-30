@@ -1,9 +1,6 @@
 package com.bs.servicefeign.controller;
 
-import com.bs.servicefeign.Entity.AccountWithTokenEntity;
-import com.bs.servicefeign.Entity.CardIdWithTokenEntity;
 import com.bs.servicefeign.Entity.PageList;
-import com.bs.servicefeign.service.AccountService;
 import com.bs.servicefeign.service.TransRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

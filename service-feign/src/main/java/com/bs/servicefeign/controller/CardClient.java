@@ -1,14 +1,11 @@
 package com.bs.servicefeign.controller;
 
-import com.bs.servicefeign.Entity.CardEntity;
 import com.bs.servicefeign.Entity.CreditcardEntity;
 import com.bs.servicefeign.Entity.SavingcardEntity;
-import com.bs.servicefeign.service.AccountService;
 import com.bs.servicefeign.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 /**

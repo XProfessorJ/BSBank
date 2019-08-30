@@ -1,8 +1,5 @@
 package com.bs.servicetransrecord.controller;
 
-
-import com.bs.servicetransrecord.entity.CardIdWithTokenEntity;
-import com.bs.servicetransrecord.entity.TransRecordEntity;
 import com.bs.servicetransrecord.entity.TransRecordWithDisplayEntity;
 import com.bs.servicetransrecord.service.TransRecordService;
 import com.bs.servicetransrecord.utils.PageList;
@@ -20,18 +17,7 @@ public class TransRecordController {
 
     @RequestMapping(value = "/Transrecords/{cardId}/{pagenum}/{pagerow}", produces = {"application/json"})
     @ResponseBody
-//    public PageList getTransRecordList(@RequestBody CardIdWithTokenEntity cardIdWithTokenEntity){
     public PageList getTransRecordList(@PathVariable("cardId") String cardId, @PathVariable("pagenum") Integer pagenum, @PathVariable("pagerow") Integer pagerow){
-//        int pagenum = 0;
-//        int pagerow = 0;
-//        try{
-//            pagenum = cardIdWithTokenEntity.getPagenum();
-//            pagerow = cardIdWithTokenEntity.getPagerow();
-//        } catch (Exception e) {
-//            return null;
-//        }
-
-
 
         PageList pageList = new PageList();
         if(pagenum == 0){
@@ -56,4 +42,5 @@ public class TransRecordController {
 
         return pageList;
     }
+
 }

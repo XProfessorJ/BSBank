@@ -1,8 +1,6 @@
 package com.bs.servicefeign.error;
 
 
-import com.bs.servicefeign.Entity.AccountWithTokenEntity;
-
 import com.bs.servicefeign.service.AccountService;
 
 import java.util.Map;

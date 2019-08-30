@@ -1,14 +1,11 @@
 package com.bs.servicefeign.service;
 
-import com.bs.servicefeign.Entity.CardEntity;
 import com.bs.servicefeign.Entity.CreditcardEntity;
 import com.bs.servicefeign.Entity.SavingcardEntity;
 import com.bs.servicefeign.error.CardError;
-import com.bs.servicefeign.error.CustomerError;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 /**
