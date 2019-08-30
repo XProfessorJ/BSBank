@@ -31,10 +31,12 @@ public class CardController {
         return resultMap;
     }
 
-
     //修改card状态
     @PutMapping(value = "/cardstatus/{cardId}")
     public String updateCardStatus(@PathVariable("cardId") String cardId) {
+        if (!cardService.getStatusByCardId(cardId).equals("Active")) {
+            return "0";
+        }
         String res = cardService.updateCardStatus(cardId);
         return res;
     }

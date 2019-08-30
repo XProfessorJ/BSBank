@@ -40,5 +40,10 @@ public class CardServiceImpl implements CardService {
         return cardDao.addCreditCard(cardId, productName, productCode, accountNickName, displayAccountNumber, currentCode, accountClassification, creditLimitIncreaseStartDate, creditLimitIncreaseEndDate, reasonCode, accountId);
     }
 
+    @Override
+    public String getStatusByCardId(String cardId) {
+        return cardDao.getStatusByCardId(cardId);
+    }
+
 
 }

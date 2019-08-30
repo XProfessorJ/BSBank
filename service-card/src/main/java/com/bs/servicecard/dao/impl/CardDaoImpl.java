@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -138,5 +140,43 @@ public class CardDaoImpl implements CardDao {
         } else {
             return "0";
         }
+    }
+
+    @Override
+    public String getStatusByCardId(String cardId) {
+        String sql = "select * from savingcard where cardId = ?";
+        try{
+            SavingcardEntity savingcardEntity = jdbcTemplate.queryForObject(sql, new Object[]{cardId}, new RowMapper<SavingcardEntity>() {
+                @Override
+                public SavingcardEntity mapRow(ResultSet resultSet, int i) throws SQLException {
+                    SavingcardEntity card = new SavingcardEntity();
+                    card.setAccountStatus(resultSet.getString("accountStatus"));
+                    return card;
+                }
+            });
+            if (savingcardEntity.getAccountStatus()!=null) {
+                return savingcardEntity.getAccountStatus();
+            }
+        } catch (Exception e) {
+        }
+
+        sql = "select * from creditcard where cardId = ?";
+        try{
+            CreditcardEntity creditcardEntity = jdbcTemplate.queryForObject(sql, new Object[]{cardId}, new RowMapper<CreditcardEntity>() {
+                @Override
+                public CreditcardEntity mapRow(ResultSet resultSet, int i) throws SQLException {
+                    CreditcardEntity card = new CreditcardEntity();
+                    card.setAccountStatus(resultSet.getString("accountStatus"));
+                    return card;
+                }
+            });
+            if (creditcardEntity.getAccountStatus()!=null) {
+                return creditcardEntity.getAccountStatus();
+            }
+        } catch (Exception e) {
+        }
+
+        return "null";
+
     }
 }

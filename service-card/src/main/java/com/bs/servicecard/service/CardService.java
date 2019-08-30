@@ -14,5 +14,6 @@ public interface CardService {
     boolean addSavingCard(String cardId, String productName, String productCode, String accountNickName, String displayAccountNumber, String currencyCode, String accountClassification, String accountId);
     boolean addCreditCard(String  cardId, String productName, String productCode, String accountNickName, String displayAccountNumber, String currentCode, String accountClassification, Date creditLimitIncreaseStartDate, Date creditLimitIncreaseEndDate, String reasonCode, String accountId);
 
+    String getStatusByCardId(String cardId);
     String updateCardStatus(String cardId);
 }
